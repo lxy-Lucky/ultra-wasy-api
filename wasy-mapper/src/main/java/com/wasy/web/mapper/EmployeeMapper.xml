@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wasy.web.mapper.EmployeeMapper">
+    <resultMap id="BaseResultMap" type="com.wasy.web.domain.Employee">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" jdbcType="CHAR"/>
+        <result column="birthday" property="birthday" jdbcType="DATE"/>
+        <result column="idCard" property="idCard" jdbcType="CHAR"/>
+        <result column="wedlock" property="wedlock" jdbcType="CHAR"/>
+        <result column="nationId" property="nationId" jdbcType="INTEGER"/>
+        <result column="nativePlace" property="nativePlace" jdbcType="VARCHAR"/>
+        <result column="politicId" property="politicId" jdbcType="INTEGER"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="departmentId" property="departmentId" jdbcType="INTEGER"/>
+        <result column="jobLevelId" property="jobLevelId" jdbcType="INTEGER"/>
+        <result column="posId" property="posId" jdbcType="INTEGER"/>
+        <result column="engageForm" property="engageForm" jdbcType="VARCHAR"/>
+        <result column="tiptopDegree" property="tiptopDegree" jdbcType="CHAR"/>
+        <result column="specialty" property="specialty" jdbcType="VARCHAR"/>
+        <result column="school" property="school" jdbcType="VARCHAR"/>
+        <result column="beginDate" property="beginDate" jdbcType="DATE"/>
+        <result column="workState" property="workState" jdbcType="CHAR"/>
+        <result column="workID" property="workID" jdbcType="CHAR"/>
+        <result column="contractTerm" property="contractTerm" jdbcType="DOUBLE"/>
+        <result column="conversionTime" property="conversionTime" jdbcType="DATE"/>
+        <result column="notWorkDate" property="notWorkDate" jdbcType="DATE"/>
+        <result column="beginContract" property="beginContract" jdbcType="DATE"/>
+        <result column="endContract" property="endContract" jdbcType="DATE"/>
+        <result column="workAge" property="workAge" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        , name, gender, birthday, idCard, wedlock, nationId, nativePlace, politicId, email,
+    phone, address, departmentId, jobLevelId, posId, engageForm, tiptopDegree, specialty, 
+    school, beginDate, workState, workID, contractTerm, conversionTime, notWorkDate, 
+    beginContract, endContract, workAge
+    </sql>
+
+    <select id="getEmployeeById" resultMap="BaseResultMap">
+        select e.*,
+               p.`id`     as pid,
+               p.`name`   as pname,
+               n.`id`     as nid,
+               n.`name`   as nname,
+               d.`id`     as did,
+               d.`name`   as
+                             dname,
+               j.`id`     as jid,
+               j.`name`   as jname,
+               pos.`id`   as posid,
+               pos.`name` as posname
+        from employee e,
+             nation n,
+             politicsstatus p,
+             department d,
+             joblevel j,
+             position pos
+        where e.`nationId` = n.`id`
+          and e.`politicId` = p.`id`
+          and e.`departmentId` = d.`id`
+          and e.`jobLevelId` = j.`id`
+          and e.`posId` = pos.`id`
+          and e.`id` = #{id}
+    </select>
+
+</mapper>
