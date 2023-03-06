@@ -8,23 +8,11 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>wasy-service</artifactId>
+    <artifactId>wasy-common</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.wasy</groupId>
             <artifactId>wasy-domain</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.wasy</groupId>
-            <artifactId>wasy-mapper</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.wasy</groupId>
-            <artifactId>wasy-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

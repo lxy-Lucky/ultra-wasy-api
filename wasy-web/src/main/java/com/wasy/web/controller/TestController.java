@@ -1,5 +1,7 @@
 package com.wasy.web.controller;
 
+import com.wasy.web.common.controller.CommonResult;
+import com.wasy.web.common.result.Result;
 import com.wasy.web.domain.Employee;
 import com.wasy.web.service.EmployeeService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +19,7 @@ public class TestController {
     private EmployeeService employeeService;
 
     @RequestMapping("/sql")
-    public Employee hello() {
-        return employeeService.getEmployeeById(1);
+    public Result<Employee> hello() {
+        return CommonResult.controllerResult(() -> employeeService.getEmployeeById(1));
     }
 }
