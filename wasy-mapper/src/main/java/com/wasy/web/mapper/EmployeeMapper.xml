@@ -23,7 +23,7 @@
         <result column="school" property="school" jdbcType="VARCHAR"/>
         <result column="beginDate" property="beginDate" jdbcType="DATE"/>
         <result column="workState" property="workState" jdbcType="CHAR"/>
-        <result column="workID" property="workID" jdbcType="CHAR"/>
+        <result column="workID" property="workId" jdbcType="CHAR"/>
         <result column="contractTerm" property="contractTerm" jdbcType="DOUBLE"/>
         <result column="conversionTime" property="conversionTime" jdbcType="DATE"/>
         <result column="notWorkDate" property="notWorkDate" jdbcType="DATE"/>
@@ -31,12 +31,6 @@
         <result column="endContract" property="endContract" jdbcType="DATE"/>
         <result column="workAge" property="workAge" jdbcType="INTEGER"/>
     </resultMap>
-    <sql id="Base_Column_List">
-        id, name, gender, birthday, idCard, wedlock, nationId, nativePlace, politicId, email,
-    phone, address, departmentId, jobLevelId, posId, engageForm, tiptopDegree, specialty, 
-    school, beginDate, workState, workID, contractTerm, conversionTime, notWorkDate, 
-    beginContract, endContract, workAge
-    </sql>
 
     <select id="getEmployeeById" resultMap="BaseResultMap">
         select e.*,
@@ -56,11 +50,11 @@
              department d,
              joblevel j,
              position pos
-        where e.`nation_id` = n.`id`
-          and e.`politic_id` = p.`id`
-          and e.`department_id` = d.`id`
-          and e.`job_level_id` = j.`id`
-          and e.`pos_id` = pos.`id`
+        where e.`nationId` = n.`id`
+          and e.`politicId` = p.`id`
+          and e.`departmentId` = d.`id`
+          and e.`jobLevelId` = j.`id`
+          and e.`posId` = pos.`id`
           and e.`id` = #{id}
     </select>
 

@@ -10,7 +10,7 @@ import com.wasy.web.common.result.Result;
  * @Version 1.0
  */
 public class CommonResult {
-    public static <T> Result<T> controllerResult(ControllerFunctionResult controllerFunctionResult) {
-        return new ControllerResult(controllerFunctionResult).computed();
+    public static <T> Result<T> controllerResult(ControllerFunctionResult<T> controllerFunctionResult) {
+        return new ControllerResult<>(controllerFunctionResult).computed();
     }
 }

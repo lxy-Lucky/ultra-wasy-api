@@ -12,14 +12,14 @@ import lombok.extern.slf4j.Slf4j;
  * @Version 1.0
  */
 @Slf4j
-public class ControllerResult {
-    private final ControllerFunctionResult controllerFunctionResult;
+public class ControllerResult<T> {
+    private final ControllerFunctionResult<T> controllerFunctionResult;
 
-    public ControllerResult(ControllerFunctionResult controllerFunctionResult) {
+    public ControllerResult(ControllerFunctionResult<T> controllerFunctionResult) {
         this.controllerFunctionResult = controllerFunctionResult;
     }
 
-    public <T> Result<T> computed() {
+    public Result<T> computed() {
         ResultEnum rce = ResultEnum.SUCCESS;
         String code = rce.getCode();
         String msg = rce.getMsg();
@@ -30,7 +30,6 @@ public class ControllerResult {
             code = "-1";
             msg = "操作异常:" + e.getMessage();
             log.error(e.getMessage());
-            e.printStackTrace();
         }
         return Result.result(code, msg, result == null ? null : result.getData());
     }

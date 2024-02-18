@@ -9,6 +9,6 @@ import com.wasy.web.common.result.Result;
  * @Date 2023/03/07
  * @Version 1.0
  */
-public interface ControllerFunctionResult {
-    Result computedResult() throws Exception;
+public interface ControllerFunctionResult<T> {
+    Result<T> computedResult() throws Exception;
 }
